@@ -1,15 +1,15 @@
-------------------------------------------------------------
+---------------------------------------------------------------------
 1. Create Database and connect to it
-------------------------------------------------------------
+---------------------------------------------------------------------
 psql --username=freecodecamp --dbname=postgres;
 
 CREATE DATABASE salon;
 
 \c salon;
 
-------------------------------------------------------------
+---------------------------------------------------------------------
 2. Create tables as required conditions
-------------------------------------------------------------
+---------------------------------------------------------------------
 CREATE TABLE customers (
 	customer_id SERIAL NOT NULL,
 	name VARCHAR(30) NOT NULL,
@@ -29,18 +29,18 @@ CREATE TABLE services (
 	name VARCHAR(30) NOT NULL
 );
 
-------------------------------------------------------------
+---------------------------------------------------------------------
 3. Fill the tables as required data conditions
-------------------------------------------------------------
+---------------------------------------------------------------------
 INSERT INTO services(service_id, name) VALUES(1, 'cut');
 INSERT INTO services(service_id, name) VALUES(2, 'color');
 INSERT INTO services(service_id, name) VALUES(3, 'perm');
 INSERT INTO services(service_id, name) VALUES(4, 'style');
 INSERT INTO services(service_id, name) VALUES(5, 'trim');
 
-------------------------------------------------------------
+---------------------------------------------------------------------
 4. Primary Key and Foreign Key assignment
-------------------------------------------------------------
+---------------------------------------------------------------------
 ALTER TABLE customers ADD PRIMARY KEY (customer_id);
 ALTER TABLE appointments ADD PRIMARY KEY (appointment_id);
 ALTER TABLE services ADD PRIMARY KEY (service_id);
@@ -48,9 +48,9 @@ ALTER TABLE services ADD PRIMARY KEY (service_id);
 ALTER TABLE appointments ADD FOREIGN KEY (customer_id) REFERENCES customers (customer_id);
 ALTER TABLE appointments ADD FOREIGN KEY (service_id) REFERENCES services (service_id);
 
-------------------------------------------------------------
+---------------------------------------------------------------------
 5. Compact sql db queries into universe.sql file
-------------------------------------------------------------
+---------------------------------------------------------------------
 pg_dump -cC --inserts -U freecodecamp salon > salon.sql
 
 ---------------------------------------------------------------------
